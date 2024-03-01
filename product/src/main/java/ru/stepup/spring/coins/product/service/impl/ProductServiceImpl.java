@@ -3,6 +3,7 @@ package ru.stepup.spring.coins.product.service.impl;
 import ru.stepup.spring.coins.product.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.stepup.spring.coins.product.exception.ProductNotFoundException;
 import ru.stepup.spring.coins.product.repository.ProductRepository;
 import ru.stepup.spring.coins.product.service.ProductService;
 import ru.stepup.spring.coins.product.service.UserService;
@@ -34,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductDto findById(long productId) {
         var entity = repository.findById(productId);
         if (entity.isEmpty()) {
-            throw new NoSuchElementException("Product " + productId + " was not found");
+            throw new ProductNotFoundException("Product " + productId + " was not found");
         }
         return new ProductDto()
                 .setId(productId)

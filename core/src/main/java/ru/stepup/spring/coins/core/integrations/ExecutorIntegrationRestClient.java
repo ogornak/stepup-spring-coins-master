@@ -28,7 +28,6 @@ public class ExecutorIntegrationRestClient implements ExecutorIntegration {
 
             CoinsExecuteDtoRs response = restClient.post()
                     .uri("/payments/execute")
-                    // .body(coinsExecuteDtoRq)
                     .header("USERID", "12345678")
                     .header("Accept", "application/json")
                     .retrieve()

@@ -1,16 +1,14 @@
 package ru.stepup.spring.coins.product.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
-@Entity
-@Table(name = "bank_user")
-@Getter
-@Setter
+@Data
+@Accessors(chain = true)
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String account;
 }
