@@ -25,7 +25,7 @@ public class CoinsService {
             }
         }
 
-        productService.getProduct(Integer.parseInt(request.productId()));
+        productService.getProduct(request.productId());
 
         ExecuteCoinsResponse response = executorService.execute(request);
         return response;

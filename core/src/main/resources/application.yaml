@@ -42,6 +42,6 @@ integrations:
       read-timeout: 30s
   product:
     client:
-      url: "http://localhost:8081/api/v1/product"
+      url: "http://localhost:8081"
       connect-timeout: 1s
       read-timeout: 30s

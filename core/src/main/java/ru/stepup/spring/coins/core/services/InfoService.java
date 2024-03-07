@@ -2,6 +2,7 @@ package ru.stepup.spring.coins.core.services;
 
 import org.springframework.stereotype.Service;
 import ru.stepup.spring.coins.core.api.ProductResponse;
+import ru.stepup.spring.coins.core.dtos.ProductDto;
 
 @Service
 public class InfoService {
@@ -12,6 +13,9 @@ public class InfoService {
     }
 
     public ProductResponse getAllProductByUserId(int userId) {
-        return new ProductResponse(productService.getUserProducts(userId));
+        var productsDto = productService.getUserProducts(userId);
+        return new ProductResponse(productsDto.products().stream().map(x -> new ProductDto(x.id(), x.account(),
+                        x.balance(), x.type()))
+                .toList());
     }
 }
