@@ -37,8 +37,9 @@ public class ProductIntegrationRestClient implements ProductIntegration {
     public ProductsDtoRs getUserProducts(int userID) {
         try {
             return restClient.get()
-                    .uri("/api/v1/product/user/{id}", Map.of("id", userID))
+                    .uri("/api/v1/product")
                     .accept(MediaType.APPLICATION_JSON)
+                    .header("USERID", String.valueOf(userID))
                     .retrieve()
                     .body(ProductsDtoRs.class);
         } catch (IntegrationException e) {

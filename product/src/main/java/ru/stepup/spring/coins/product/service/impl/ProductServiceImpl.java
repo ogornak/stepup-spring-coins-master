@@ -6,20 +6,17 @@ import ru.stepup.spring.coins.product.entity.Product;
 import ru.stepup.spring.coins.product.exception.ProductNotFoundException;
 import ru.stepup.spring.coins.product.repository.ProductRepository;
 import ru.stepup.spring.coins.product.service.ProductService;
-import ru.stepup.spring.coins.product.service.UserService;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
-    private final UserService userService;
     private final ProductRepository repository;
 
     @Override
     public List<Product> findAllProductByUserId(long userId) {
-        var user = userService.findById(userId);
-        return repository.findByAccount(user.getAccount());
+        return repository.findByUserId(userId);
     }
 
     @Override

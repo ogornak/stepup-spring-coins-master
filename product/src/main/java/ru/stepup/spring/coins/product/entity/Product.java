@@ -15,4 +15,6 @@ public class Product {
     private String account;
     private Float balance;
     private String type;
+    @Column(name = "user_id")
+    private Long userId;
 }

@@ -1,22 +1,13 @@
 
 drop table if exists product;
-drop table if exists bank_user;
 
 create table product (
 	id bigserial,
 	account text,
 	balance float,
-	type text
+	type text,
+	user_id int8
 );
 
-insert into product(account, balance, type)
-values ('123', 40, 'счет'), ('123', 110, 'карта'), ('234', 0, 'счет');
-
-
-create table bank_user (
-	id bigserial,
-	account text
-);
-
-insert into bank_user (account)
-values ('123'), ('234'), ('678');
+insert into product(account, balance, type, user_id)
+values ('123', 40, 'счет', 1), ('123', 110, 'карта', 1), ('234', 0, 'счет', 2);

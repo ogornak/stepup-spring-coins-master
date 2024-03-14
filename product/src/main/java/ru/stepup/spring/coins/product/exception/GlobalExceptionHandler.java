@@ -15,10 +15,4 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(new ErrorDto("PRODUCT_NOT_FOUND", e.getMessage()),
                 HttpStatus.BAD_REQUEST);
     }
-
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorDto> handleUserNotFoundException(UserNotFoundException e) {
-        return new ResponseEntity<>(new ErrorDto("USER_NOT_FOUND", e.getMessage()),
-                HttpStatus.BAD_REQUEST);
-    }
 }

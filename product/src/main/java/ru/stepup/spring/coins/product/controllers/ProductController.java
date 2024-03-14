@@ -1,11 +1,8 @@
 package ru.stepup.spring.coins.product.controllers;
 
+import org.springframework.web.bind.annotation.*;
 import ru.stepup.spring.coins.product.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import ru.stepup.spring.coins.product.dto.ProductsDto;
 import ru.stepup.spring.coins.product.service.ProductService;
 
@@ -27,8 +24,8 @@ public class ProductController {
                 .setType(product.getType());
     }
 
-    @GetMapping("/user/{userId}")
-    public ProductsDto getByUserId(@PathVariable long userId) {
+    @GetMapping()
+    public ProductsDto getByUserId(@RequestHeader(name = "USERID") Long userId) {
         var list = service.findAllProductByUserId(userId)
                 .stream()
                 .map(entity -> new ProductDto()
