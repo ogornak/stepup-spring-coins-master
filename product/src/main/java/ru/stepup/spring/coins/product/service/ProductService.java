@@ -1,11 +1,11 @@
 package ru.stepup.spring.coins.product.service;
 
-import ru.stepup.spring.coins.product.dto.ProductDto;
+import ru.stepup.spring.coins.product.entity.Product;
 
 import java.util.List;
 
 public interface ProductService {
-    List<ProductDto> findAllProductByUserId(long userId);
+    List<Product> findAllProductByUserId(long userId);
 
-    ProductDto findById(long productId);
+    Product findById(long productId);
 }

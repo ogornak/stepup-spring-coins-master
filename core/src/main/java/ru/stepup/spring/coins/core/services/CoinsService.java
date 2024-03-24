@@ -10,10 +10,12 @@ import ru.stepup.spring.coins.core.configurations.properties.CoreProperties;
 public class CoinsService {
     private final CoreProperties coreProperties;
     private final ExecutorService executorService;
+    private final ProductService productService;
 
-    public CoinsService(CoreProperties coreProperties, ExecutorService executorService) {
+    public CoinsService(CoreProperties coreProperties, ExecutorService executorService, ProductService productService) {
         this.coreProperties = coreProperties;
         this.executorService = executorService;
+        this.productService = productService;
     }
 
     public ExecuteCoinsResponse execute(ExecuteCoinsRequest request) {
@@ -22,6 +24,9 @@ public class CoinsService {
                 throw new BadRequestException("Указан заблокированный номер кошелька", "BLOCKED_ACCOUNT_NUMBER");
             }
         }
+
+        productService.getProduct(request.productId());
+
         ExecuteCoinsResponse response = executorService.execute(request);
         return response;
     }
